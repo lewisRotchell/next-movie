@@ -1,0 +1,12 @@
+@import "../../styles/variables";
+
+.searchMovie {
+  width: 100%;
+  max-width: 300px;
+  input {
+    height: 25px;
+    width: 100%;
+    padding: 8px;
+    border: 1px #333 solid;
+  }
+}
