@@ -1,0 +1,16 @@
+.newReleases {
+  h2 {
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-bottom: 17px;
+  }
+
+  .swiperContainer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .swiperSlide {
+    width: 95px;
+  }
+}
