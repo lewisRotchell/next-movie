@@ -1,0 +1,24 @@
+.MovieDetailPage {
+  header {
+    position: relative;
+    padding: 0 -14px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .movieBackdrop {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .movieDetailsContainer {
+    position: relative;
+    transform: translateY(-60px);
+  }
+
+  .moviePoster {
+    // position: absolute;
+    // top: -100px;
+  }
+}
