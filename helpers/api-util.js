@@ -14,3 +14,13 @@ export async function getMovies() {
     console.log(error);
   }
 }
+
+export async function getMovieById(movieId) {
+  const res =
+    await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=17e4ebec642c3b3c9a470f722d2ff89e&language=en-GB
+`);
+  const data = await res.json();
+  return data;
+}
+
+//make a function to get cast and director
