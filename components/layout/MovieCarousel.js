@@ -1,19 +1,20 @@
 import React from "react";
-import Image from "next/image";
+import { useRouter } from "next/router";
 import classes from "./MovieCarousel.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import "swiper/swiper-bundle.css";
-import SwiperCore, {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-} from "swiper/core";
 
-// SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+import SwiperCore, { Navigation } from "swiper/core";
+
+SwiperCore.use([Navigation]);
 
 const NewReleases = ({ movies, title }) => {
   console.log(movies);
+  const router = useRouter();
+
+  const handleClick = (movieId) => {
+    router.push(`/${movieId}`);
+  };
+
   return (
     <section className={`section ${classes.carousel}`}>
       <h2>{title}</h2>
@@ -21,23 +22,26 @@ const NewReleases = ({ movies, title }) => {
         className={classes.swiperContainer}
         spaceBetween={14}
         slidesPerView={"auto"}
-
-        // navigation
-        // pagination={{ clickable: true }}
-        // scrollbar={{ draggable: true }}
-        // onSwiper={(swiper) => console.log(swiper)}
-        // onSlideChange={() => console.log("slide change")}
+        navigation
+        breakpoints={{
+          1200: {
+            slidesPerGroup: 4,
+          },
+        }}
       >
         {movies.map((movie) => (
-          <SwiperSlide className={classes.swiperSlide} key={movie.id}>
-            {/* <img src={`https://image.tmdb.org/t/p/w92/${movie.poster_path}`} /> */}
+          <SwiperSlide
+            onClick={() => handleClick(movie.id)}
+            className={classes.swiperSlide}
+            key={movie.id}
+          >
             <picture>
               <source
-                media="(max-width: 799px)"
+                media="(max-width: 419px)"
                 srcSet={`https://image.tmdb.org/t/p/w92/${movie.poster_path}`}
               />
               <source
-                media="(min-width: 800px)"
+                media="(min-width: 420px)"
                 srcSet={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
               />
               <img

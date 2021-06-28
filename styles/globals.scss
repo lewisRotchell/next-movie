@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 @import "./variables.scss";
 @import "swiper/swiper.scss";
+@import "swiper/components/navigation/navigation.scss";
 * {
   margin: 0;
   padding: 0;
@@ -32,4 +33,13 @@ img {
 
 .section-padding {
   padding: 0 14px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
 }
