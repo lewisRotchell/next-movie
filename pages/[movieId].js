@@ -15,20 +15,24 @@ const MovieDetailPage = ({ selectedMovie }) => {
     cast,
   } = selectedMovie;
   console.log(selectedMovie);
+
+  // const backgroundImg = {
+  //   backgroundImage: `url(https://image.tmdb.org/t/p/w780/${backdrop_path})`,
+  // };
   return (
     <section className={classes.MovieDetailPage}>
-      <header>
+      <div className={classes.backgroundImg}>
         <img
           className={classes.movieBackdrop}
           src={`https://image.tmdb.org/t/p/w780/${backdrop_path}`}
           alt=""
         />
-      </header>
+      </div>
 
       <div className={`section-padding ${classes.movieDetailsContainer}`}>
         <img
           className={classes.moviePoster}
-          src={`https://image.tmdb.org/t/p/w92/${poster_path}`}
+          src={`https://image.tmdb.org/t/p/w154/${poster_path}`}
           alt=""
         />
         <h1>{title}</h1>
