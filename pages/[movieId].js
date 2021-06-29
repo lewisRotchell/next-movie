@@ -20,14 +20,19 @@ const MovieDetailPage = ({ selectedMovie }) => {
   //   backgroundImage: `url(https://image.tmdb.org/t/p/w780/${backdrop_path})`,
   // };
   return (
-    <section className={classes.MovieDetailPage}>
-      <div className={classes.backgroundImg}>
+    <section
+      style={{
+        "--img": `url('https://image.tmdb.org/t/p/w780/${backdrop_path}')`,
+      }}
+      className={classes.MovieDetailPage}
+    >
+      {/* <div className={classes.backgroundImg}>
         <img
           className={classes.movieBackdrop}
           src={`https://image.tmdb.org/t/p/w780/${backdrop_path}`}
           alt=""
         />
-      </div>
+      </div> */}
 
       <div className={`section-padding ${classes.movieDetailsContainer}`}>
         <img
