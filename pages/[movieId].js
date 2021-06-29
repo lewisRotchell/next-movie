@@ -10,8 +10,8 @@ const MovieDetailPage = ({ selectedMovie }) => {
     overview,
     genres,
     director,
-    releaseDate,
-    runTime,
+    release_date,
+    runtime,
     cast,
   } = selectedMovie;
   console.log(selectedMovie);
@@ -41,13 +41,19 @@ const MovieDetailPage = ({ selectedMovie }) => {
           alt=""
         />
         <h1>{title}</h1>
-        <p>{overview}</p>
-        <ul>
-          <li>genres mapped here</li>
+        <ul className={classes.genres}>
+          {genres.map((genre, index, arr) => (
+            <li key={genre.id}>
+              {genre.name}
+              {index !== arr.length - 1 ? ", " : ""}
+            </li>
+          ))}
         </ul>
-        <p>Directored By </p>
-        <p> Release Date: {releaseDate}</p>
-        <p> Run Time: {runTime}</p>
+        <p>{overview}</p>
+
+        <p>Directed By </p>
+        <p> Release Date: {release_date}</p>
+        <p> Run Time: {runtime} mins</p>
         <p>Cast</p>
       </div>
     </section>
