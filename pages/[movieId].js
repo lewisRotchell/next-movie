@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { getMovieById, getMovies } from "../helpers/api-util";
 import classes from "../styles/MoviePage.module.scss";
 
@@ -19,12 +20,13 @@ const MovieDetailPage = ({ selectedMovie }) => {
   // const backgroundImg = {
   //   backgroundImage: `url(https://image.tmdb.org/t/p/w780/${backdrop_path})`,
   // };
+
   return (
     <section
       style={{
-        "--img": `url('https://image.tmdb.org/t/p/w780/${backdrop_path}')`,
+        "--img": `url('https://image.tmdb.org/t/p/w1280/${backdrop_path}')`,
       }}
-      className={classes.MovieDetailPage}
+      className={`${classes.MovieDetailPage}`}
     >
       {/* <div className={classes.backgroundImg}>
         <img
@@ -35,6 +37,10 @@ const MovieDetailPage = ({ selectedMovie }) => {
       </div> */}
 
       <div className={`section-padding ${classes.movieDetailsContainer}`}>
+        <nav className={classes.backButton}>
+          <Link href="/">Back!</Link>
+        </nav>
+
         <img
           className={classes.moviePoster}
           src={`https://image.tmdb.org/t/p/w154/${poster_path}`}
