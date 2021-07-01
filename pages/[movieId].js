@@ -24,7 +24,9 @@ const MovieDetailPage = ({ selectedMovie }) => {
   return (
     <section
       style={{
-        "--img": `url('https://image.tmdb.org/t/p/w1280/${backdrop_path}')`,
+        "--img": `url('https://image.tmdb.org/t/p/w300/${backdrop_path}')`,
+        "--img-md": `url('https://image.tmdb.org/t/p/w780/${backdrop_path}')`,
+        "--img-lg": `url('https://image.tmdb.org/t/p/w1280/${backdrop_path}')`,
       }}
       className={`${classes.MovieDetailPage}`}
     >
