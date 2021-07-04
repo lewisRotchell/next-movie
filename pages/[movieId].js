@@ -63,6 +63,7 @@ const MovieDetailPage = ({ selectedMovie }) => {
         <p> Release Date: {release_date}</p>
         <p> Run Time: {runtime} mins</p>
         <p>Cast</p>
+        <ul></ul>
       </div>
     </section>
   );
