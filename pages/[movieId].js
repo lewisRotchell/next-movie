@@ -41,19 +41,26 @@ const MovieDetailPage = ({ selectedMovie }) => {
           alt=""
         />
         <h1>{title}</h1>
-        <ul className={classes.genres}>
-          {genres.map((genre, index, arr) => (
-            <li key={genre.id}>
-              {genre.name}
-              {index !== arr.length - 1 ? ", " : ""}
-            </li>
-          ))}
-        </ul>
+        <div className={classes.movieInfo}>
+          <p>{release_date.slice(0, 4)}</p>
+          <ul className={classes.genres}>
+            {genres.length > 1
+              ? genres
+                  .slice(0, 2)
+                  .map((genre, index, arr) => (
+                    <li key={genre.id}>{`${genre.name}${
+                      index === 0 ? ", " : ""
+                    }`}</li>
+                  ))
+              : genres[0].name}
+          </ul>
+          <p>{runtime} mins</p>
+        </div>
+
         <p>{overview}</p>
 
         <p>Directed By </p>
-        <p> Release Date: {release_date}</p>
-        <p> Run Time: {runtime} mins</p>
+
         <p>Cast</p>
         <ul></ul>
       </div>
