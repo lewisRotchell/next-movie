@@ -30,14 +30,6 @@ const MovieDetailPage = ({ selectedMovie }) => {
       }}
       className={`${classes.MovieDetailPage}`}
     >
-      {/* <div className={classes.backgroundImg}>
-        <img
-          className={classes.movieBackdrop}
-          src={`https://image.tmdb.org/t/p/w780/${backdrop_path}`}
-          alt=""
-        />
-      </div> */}
-
       <div className={`section-padding ${classes.movieDetailsContainer}`}>
         <nav className={classes.backButton}>
           <Link href="/">Back!</Link>
