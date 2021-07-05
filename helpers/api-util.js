@@ -17,10 +17,25 @@ export async function getMovies() {
 
 export async function getMovieById(movieId) {
   const res =
-    await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=17e4ebec642c3b3c9a470f722d2ff89e&language=en-GB
+    await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.API_KEY}&language=en-GB
 `);
   const data = await res.json();
   return data;
 }
 
 //make a function to get cast and director
+export async function getCast(movieId) {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/337404/credits?api_key=${process.env.API_KEY}&language=en-GB`
+  );
+  const data = await res.json();
+
+  //Get cast
+  let cast = data.cast;
+  let director = data.crew.find((e) => e.job === "Director");
+  return {
+    cast,
+    director,
+  };
+  // return data;
+}

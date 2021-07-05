@@ -1,25 +1,24 @@
 import React from "react";
 import Link from "next/link";
-import { getMovieById, getMovies } from "../helpers/api-util";
+import { getCast, getMovieById, getMovies } from "../helpers/api-util";
 import classes from "../styles/MoviePage.module.scss";
+import MovieCarousel from "../components/layout/MovieCarousel";
 
-const MovieDetailPage = ({ selectedMovie }) => {
+const MovieDetailPage = ({ selectedMovie, crew }) => {
   const {
     title,
     backdrop_path,
     poster_path,
     overview,
     genres,
-    director,
     release_date,
     runtime,
-    cast,
   } = selectedMovie;
   console.log(selectedMovie);
+  const { name: directorName } = crew.director;
 
-  // const backgroundImg = {
-  //   backgroundImage: `url(https://image.tmdb.org/t/p/w780/${backdrop_path})`,
-  // };
+  const { cast } = crew;
+  console.log(cast);
 
   return (
     <section
@@ -47,7 +46,7 @@ const MovieDetailPage = ({ selectedMovie }) => {
             {genres.length > 1
               ? genres
                   .slice(0, 2)
-                  .map((genre, index, arr) => (
+                  .map((genre, index) => (
                     <li key={genre.id}>{`${genre.name}${
                       index === 0 ? ", " : ""
                     }`}</li>
@@ -59,9 +58,10 @@ const MovieDetailPage = ({ selectedMovie }) => {
 
         <p>{overview}</p>
 
-        <p>Directed By </p>
+        <p>Director: {directorName} </p>
 
-        <p>Cast</p>
+        {/* <p>Cast: {cast.map} </p> */}
+
         <ul></ul>
       </div>
     </section>
@@ -73,9 +73,12 @@ export async function getStaticProps(context) {
 
   const movie = await getMovieById(movieId);
 
+  const people = await getCast(movieId);
+
   return {
     props: {
       selectedMovie: movie,
+      crew: people,
     },
   };
 }
