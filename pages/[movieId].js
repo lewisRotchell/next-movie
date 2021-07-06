@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { getCast, getMovieById, getMovies } from "../helpers/api-util";
 import classes from "../styles/MoviePage.module.scss";
-import MovieCarousel from "../components/layout/MovieCarousel";
 
 const MovieDetailPage = ({ selectedMovie, crew }) => {
   const {
@@ -41,7 +40,7 @@ const MovieDetailPage = ({ selectedMovie, crew }) => {
         />
         <h1>{title}</h1>
         <div className={classes.movieInfo}>
-          <p>{release_date.slice(0, 4)}</p>
+          <p className={classes.releaseDate}>{`${release_date.slice(0, 4)}`}</p>
           <ul className={classes.genres}>
             {genres.length > 1
               ? genres
@@ -58,9 +57,18 @@ const MovieDetailPage = ({ selectedMovie, crew }) => {
 
         <p>{overview}</p>
 
-        <p>Director: {directorName} </p>
+        <div className={classes.starring}>
+          <p>Starring: </p>
+          <ul>
+            {cast.slice(0, 4).map((actor, index) => (
+              <li key={actor.id}>{`${actor.name}${
+                index !== 3 ? ", " : ""
+              } `}</li>
+            ))}
+          </ul>
+        </div>
 
-        {/* <p>Cast: {cast.map} </p> */}
+        <p>Director: {directorName} </p>
 
         <ul></ul>
       </div>
