@@ -60,6 +60,13 @@
   }
 
   .backButton {
+    font-size: 1.5rem;
+    margin-left: 2rem;
+    text-decoration: none;
+    color: #fff;
+    display: inline;
+    width: 15px;
+    cursor: pointer;
   }
 
   .moviePoster {
@@ -90,6 +97,7 @@
     .movieInfo {
       display: inline;
       text-align: center;
+      font-weight: 700;
 
       p {
         display: inline;
@@ -126,5 +134,14 @@
         }
       }
     }
+  }
+
+  .plotSummaryTitle {
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+
+  .subtitle {
+    font-weight: 700;
   }
 }

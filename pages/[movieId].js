@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { getCast, getMovieById, getMovies } from "../helpers/api-util";
 import classes from "../styles/MoviePage.module.scss";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const MovieDetailPage = ({ selectedMovie, crew }) => {
   const {
@@ -29,9 +31,11 @@ const MovieDetailPage = ({ selectedMovie, crew }) => {
       className={`${classes.MovieDetailPage}`}
     >
       <div className={`section-padding ${classes.movieDetailsContainer}`}>
-        <nav className={classes.backButton}>
-          <Link href="/">Back!</Link>
-        </nav>
+        <Link href="/">
+          <a className={classes.backButton}>
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </a>
+        </Link>
 
         <img
           className={classes.moviePoster}
@@ -54,11 +58,14 @@ const MovieDetailPage = ({ selectedMovie, crew }) => {
           </ul>
           <p>{runtime} mins</p>
         </div>
-
+        <p className={classes.plotSummaryTitle}>Plot Summary</p>
         <p>{overview}</p>
 
         <div className={classes.starring}>
-          <p>Starring: </p>
+          <p>
+            {" "}
+            <span className={classes.subtitle}>Starring : </span>
+          </p>
           <ul>
             {cast.slice(0, 4).map((actor, index) => (
               <li key={actor.id}>{`${actor.name}${
@@ -68,7 +75,9 @@ const MovieDetailPage = ({ selectedMovie, crew }) => {
           </ul>
         </div>
 
-        <p>Director: {directorName} </p>
+        <p>
+          <span className={classes.subtitle}>Director : </span> {directorName}{" "}
+        </p>
 
         <ul></ul>
       </div>
