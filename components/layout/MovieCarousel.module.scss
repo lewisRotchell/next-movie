@@ -1,8 +1,12 @@
 .carousel {
   h2 {
-    font-size: 0.875rem;
+    font-size: 1.1rem;
     font-weight: 400;
     margin-bottom: 17px;
+
+    @media (min-width: "768px") {
+      font-size: 1.4rem;
+    }
   }
 
   .swiperContainer {

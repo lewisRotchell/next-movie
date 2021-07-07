@@ -8,10 +8,18 @@
   padding: 14px;
   width: 100%;
 
+  @media (min-width: "768px") {
+    justify-content: center;
+  }
+
   h1 {
     font-weight: 400;
     font-size: 1.125rem;
     margin-right: 33px;
     flex-shrink: 0;
+
+    @media (min-width: "768px") {
+      font-size: 2rem;
+    }
   }
 }

@@ -2,11 +2,16 @@
 
 .searchMovie {
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   input {
     height: 25px;
     width: 100%;
     padding: 8px;
-    border: 1px #333 solid;
+    border: 1px #fff solid;
+    border-radius: 10px;
+    color: $color-background;
+
+    @media (min-width: "768px") {
+    }
   }
 }
