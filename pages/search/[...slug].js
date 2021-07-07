@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 import { useRouter } from "next/router";
-import classes from "./SearchPage.module.scss";
+import classes from "../../styles/SearchPage.module.scss";
 import MovieList from "../../components/layout/MovieList";
+import BackButton from "../../components/button/BackButton";
 
 const searchPage = () => {
   const router = useRouter();
@@ -35,14 +36,18 @@ const searchPage = () => {
   if (totalResults === 0) {
     return (
       <>
+        <BackButton />
         <h1>No Search Results for {filterMovies}</h1>
       </>
     );
   }
   return (
     <section className={`section-padding ${classes.searchPage} `}>
-      <h1>Search results for {filterMovies}</h1>
-      <MovieList movies={loadedMovies} />
+      <BackButton />
+      <h1>Search results for "{filterMovies}"</h1>
+      <MovieList
+        movies={loadedMovies.filter((movie) => movie.backdrop_path !== null)}
+      />
     </section>
   );
 };

@@ -2,8 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { getCast, getMovieById, getMovies } from "../helpers/api-util";
 import classes from "../styles/MoviePage.module.scss";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import BackButton from "../components/button/BackButton";
 
 const MovieDetailPage = ({ selectedMovie, crew }) => {
   const {
@@ -31,11 +30,7 @@ const MovieDetailPage = ({ selectedMovie, crew }) => {
       className={`${classes.MovieDetailPage}`}
     >
       <div className={`section-padding ${classes.movieDetailsContainer}`}>
-        <Link href="/">
-          <a className={classes.backButton}>
-            <FontAwesomeIcon icon={faChevronLeft} />
-          </a>
-        </Link>
+        <BackButton />
 
         <img
           className={classes.moviePoster}
