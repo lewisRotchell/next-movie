@@ -15,7 +15,7 @@ const searchPage = () => {
   const filterMovies = router.query.slug;
 
   const { data, error } = useSWR(
-    `https://api.themoviedb.org/3/search/movie?api_key=17e4ebec642c3b3c9a470f722d2ff89e&language=en-GB&query=${filterMovies}&page=1&include_adult=false`
+    `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}e&language=en-GB&query=${filterMovies}&page=1&include_adult=false`
   );
 
   useEffect(() => {

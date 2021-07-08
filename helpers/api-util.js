@@ -32,7 +32,7 @@ export async function getCast(movieId) {
 
   //Get cast
   let cast = data.cast;
-  let director = data.crew.find((e) => e.job === "Director");
+  let director = data.crew.find((e) => e.job === "Director") || "";
   return {
     cast,
     director,
