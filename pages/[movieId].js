@@ -51,7 +51,9 @@ const MovieDetailPage = ({ selectedMovie, crew }) => {
                       index === 0 ? ", " : ""
                     }`}</li>
                   ))
-              : genres[0].name}
+              : genres === 0
+              ? genres[0].name
+              : ""}
           </ul>
           <p>{runtime} mins</p>
         </div>
@@ -64,11 +66,15 @@ const MovieDetailPage = ({ selectedMovie, crew }) => {
             <span className={classes.subtitle}>Starring : </span>
           </p>
           <ul>
-            {cast.slice(0, 4).map((actor, index) => (
-              <li key={actor.id}>{`${actor.name}${
-                index !== 3 ? ", " : ""
-              } `}</li>
-            ))}
+            {cast >= 1
+              ? cast
+                  .slice(0, 4)
+                  .map((actor, index) => (
+                    <li key={actor.id}>{`${actor.name}${
+                      index !== 3 ? ", " : ""
+                    } `}</li>
+                  ))
+              : cast[0].name}
           </ul>
         </div>
 

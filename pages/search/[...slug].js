@@ -43,11 +43,11 @@ const searchPage = () => {
   }
   return (
     <section className={`section-padding ${classes.searchPage} `}>
-      <BackButton />
       <h1>Search results for "{filterMovies}"</h1>
+      <BackButton />
       <MovieList
         movies={loadedMovies.filter(
-          (movie) => movie.backdrop_path !== null || movie.poster_path !== null
+          (movie) => movie.backdrop_path !== null && movie.poster_path !== null
         )}
       />
     </section>
