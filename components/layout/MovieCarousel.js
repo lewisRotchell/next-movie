@@ -8,7 +8,6 @@ import SwiperCore, { Navigation } from "swiper/core";
 SwiperCore.use([Navigation]);
 
 const NewReleases = ({ movies, title }) => {
-  console.log(movies);
   const router = useRouter();
 
   const handleClick = (movieId) => {

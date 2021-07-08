@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import classes from "../../styles/SearchPage.module.scss";
 import MovieList from "../../components/layout/MovieList";
 import BackButton from "../../components/button/BackButton";
+import Loading from "../../components/layout/Loading";
 
 const searchPage = () => {
   const router = useRouter();
@@ -28,7 +30,7 @@ const searchPage = () => {
   if (!loadedMovies) {
     return (
       <>
-        <p>Loading...</p>
+        <Loading />
       </>
     );
   }
@@ -36,21 +38,40 @@ const searchPage = () => {
   if (totalResults === 0) {
     return (
       <>
+        <Head>
+          <title>{`No search results for ${filterMovies}`}</title>
+          <meta
+            name="description"
+            content={`No search results for ${filterMovies}`}
+          />
+          <link rel="icon" href="/favicon.png" />
+        </Head>
         <BackButton />
         <h1>No Search Results for {filterMovies}</h1>
       </>
     );
   }
   return (
-    <section className={`section-padding ${classes.searchPage} `}>
-      <h1>Search results for "{filterMovies}"</h1>
-      <BackButton />
-      <MovieList
-        movies={loadedMovies.filter(
-          (movie) => movie.backdrop_path !== null && movie.poster_path !== null
-        )}
-      />
-    </section>
+    <>
+      <Head>
+        <title>{`Search results for ${filterMovies}`}</title>
+        <meta
+          name="description"
+          content={`Search results for ${filterMovies}`}
+        />
+        <link rel="icon" href="/favicon.png" />
+      </Head>
+      <section className={`section-padding ${classes.searchPage} `}>
+        <h1>Search results for "{filterMovies}"</h1>
+        <BackButton />
+        <MovieList
+          movies={loadedMovies.filter(
+            (movie) =>
+              movie.backdrop_path !== null && movie.poster_path !== null
+          )}
+        />
+      </section>
+    </>
   );
 };
 

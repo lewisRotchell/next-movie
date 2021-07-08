@@ -13,7 +13,7 @@ const MovieCard = ({ details }) => {
       <picture>
         <source
           media="(max-width: 419px)"
-          srcSet={`https://image.tmdb.org/t/p/w92/${details.poster_path}`}
+          srcSet={`https://image.tmdb.org/t/p/w154/${details.poster_path}`}
         />
         <source
           media="(min-width: 420px)"
