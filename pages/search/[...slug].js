@@ -46,7 +46,9 @@ const searchPage = () => {
       <BackButton />
       <h1>Search results for "{filterMovies}"</h1>
       <MovieList
-        movies={loadedMovies.filter((movie) => movie.backdrop_path !== null)}
+        movies={loadedMovies.filter(
+          (movie) => movie.backdrop_path !== null || movie.poster_path !== null
+        )}
       />
     </section>
   );
