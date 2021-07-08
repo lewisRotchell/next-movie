@@ -119,11 +119,7 @@ export async function getStaticPaths() {
   //   ...movies[2].results,
   // ];
 
-  const paths = [
-    ...movies[0].results,
-    ...movies[1].results,
-    ...movies[2].results,
-  ].map((movie) => ({
+  const paths = movies.map((movie) => ({
     params: { movieId: movie.id.toString() },
   }));
 

@@ -1,8 +1,21 @@
-export async function getMovies() {
-  let newReleasesUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-GB&page=1&region=GB`;
-  let popularMoviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-GB&page=1&region=GB`;
-  let topRatedMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-GB&page=1&region=GB`;
+let newReleasesUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-GB&page=1&region=GB`;
+let popularMoviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-GB&page=1&region=GB`;
+let topRatedMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-GB&page=1&region=GB`;
 
+export async function getMovies() {
+  const urls = [newReleasesUrl, popularMoviesUrl, topRatedMoviesUrl];
+
+  try {
+    let data = await Promise.all(
+      urls.map((url) => fetch(url).then((response) => response.json()))
+    ).catch((error) => console.log(error));
+    return [...data[0].results, ...data[1].results, ...data[2].results];
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getMoviesForCarousel() {
   const urls = [newReleasesUrl, popularMoviesUrl, topRatedMoviesUrl];
 
   try {
