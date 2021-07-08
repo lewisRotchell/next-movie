@@ -14,7 +14,9 @@ const MovieDetailPage = ({ selectedMovie, crew }) => {
     release_date,
     runtime,
   } = selectedMovie;
+
   console.log(selectedMovie);
+
   const { name: directorName } = crew.director;
 
   const { cast } = crew;

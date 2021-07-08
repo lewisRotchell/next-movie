@@ -26,7 +26,7 @@ export async function getMovieById(movieId) {
 //make a function to get cast and director
 export async function getCast(movieId) {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/337404/credits?api_key=${process.env.API_KEY}&language=en-GB`
+    `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.API_KEY}&language=en-GB`
   );
   const data = await res.json();
 
