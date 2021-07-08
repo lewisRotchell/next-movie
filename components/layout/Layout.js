@@ -1,5 +1,5 @@
 import Footer from "./Footer";
-import MainHeader from "./mainHeader";
+import MainHeader from "./MainHeader";
 import classes from "./Layout.module.scss";
 
 function Layout(props) {
