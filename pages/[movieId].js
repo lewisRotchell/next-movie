@@ -116,8 +116,8 @@ export async function getStaticPaths() {
 
   const bigMovieArray = [
     ...movies[0].results,
-    // ...movies[1].results,
-    // ...movies[2].results,
+    ...movies[1].results,
+    ...movies[2].results,
   ];
 
   const paths = bigMovieArray.map((movie) => ({
