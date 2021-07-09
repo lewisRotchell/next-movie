@@ -21,7 +21,7 @@ const MovieCard = ({ details }) => {
         />
         <img
           src={`https://image.tmdb.org/t/p/w185/${details.poster_path}`}
-          alt=""
+          alt={details.title}
         />
       </picture>
     </div>

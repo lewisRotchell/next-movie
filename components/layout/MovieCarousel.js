@@ -47,7 +47,7 @@ const NewReleases = ({ movies, title }) => {
               /> */}
             <img
               src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
-              alt=""
+              alt={movie.title}
             />
             {/* </picture> */}
           </SwiperSlide>

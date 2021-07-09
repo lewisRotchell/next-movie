@@ -19,8 +19,6 @@ const MovieDetailPage = ({ selectedMovie, crew }) => {
 
   const { cast } = crew;
 
-  console.log(process.env.NODE_ENV);
-
   return (
     <>
       <Head>
@@ -42,7 +40,7 @@ const MovieDetailPage = ({ selectedMovie, crew }) => {
           <img
             className={classes.moviePoster}
             src={`https://image.tmdb.org/t/p/w185/${poster_path}`}
-            alt=""
+            alt={title}
           />
           <h1>{title}</h1>
           <div className={classes.movieInfo}>
