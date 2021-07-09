@@ -24,8 +24,6 @@ const searchPage = () => {
     if (data && filterMovies !== undefined) {
       setLoadedMovies(data.results);
       setTotalResults(data.total_results);
-      console.log(totalResults);
-      console.log(data);
     }
   }, [data]);
 
