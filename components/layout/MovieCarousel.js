@@ -19,9 +19,11 @@ const NewReleases = ({ movies, title }) => {
       <h2>{title}</h2>
       <Swiper
         className={classes.swiperContainer}
-        spaceBetween={14}
+        spaceBetween={20}
         slidesPerView={"auto"}
         navigation
+        freeMode={true}
+        freemodefluid="true"
         breakpoints={{
           1200: {
             slidesPerGroup: 4,
@@ -37,7 +39,7 @@ const NewReleases = ({ movies, title }) => {
             <picture>
               <source
                 media="(max-width: 419px)"
-                srcSet={`https://image.tmdb.org/t/p/w92/${movie.poster_path}`}
+                srcSet={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
               />
               <source
                 media="(min-width: 420px)"
