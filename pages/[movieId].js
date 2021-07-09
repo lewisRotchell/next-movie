@@ -107,6 +107,7 @@ export async function getStaticProps(context) {
       selectedMovie: movie,
       crew: people,
     },
+    revalidate: 1800,
   };
 }
 
@@ -126,7 +127,6 @@ export async function getStaticPaths() {
   return {
     paths: paths,
     fallback: "blocking",
-    revalidate: 1800,
   };
 }
 
