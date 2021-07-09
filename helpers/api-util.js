@@ -9,7 +9,7 @@ export async function getMovies() {
     let data = await Promise.all(
       urls.map((url) => fetch(url).then((response) => response.json()))
     ).catch((error) => console.log(error));
-    return [...data[0].results, ...data[1].results, ...data[2].results];
+    return data;
   } catch (error) {
     console.log(error);
   }

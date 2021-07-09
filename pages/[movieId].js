@@ -113,13 +113,13 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const movies = await getMovies();
 
-  // const bigMovieArray = [
-  //   ...movies[0].results,
-  //   ...movies[1].results,
-  //   ...movies[2].results,
-  // ];
+  const bigMovieArray = [
+    ...movies[0].results,
+    ...movies[1].results,
+    ...movies[2].results,
+  ];
 
-  const paths = movies.map((movie) => ({
+  const paths = bigMovieArray.map((movie) => ({
     params: { movieId: movie.id.toString() },
   }));
 
