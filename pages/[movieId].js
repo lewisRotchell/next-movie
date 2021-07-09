@@ -126,7 +126,7 @@ export async function getStaticPaths() {
   return {
     paths: paths,
     fallback: "blocking",
-    revalidate: "1800s",
+    revalidate: 1800,
   };
 }
 
