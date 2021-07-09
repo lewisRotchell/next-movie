@@ -36,7 +36,7 @@ const NewReleases = ({ movies, title }) => {
             className={classes.swiperSlide}
             key={movie.id}
           >
-            <picture>
+            {/* <picture>
               <source
                 media="(max-width: 419px)"
                 srcSet={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
@@ -44,12 +44,12 @@ const NewReleases = ({ movies, title }) => {
               <source
                 media="(min-width: 420px)"
                 srcSet={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
-              />
-              <img
-                src={`https://image.tmdb.org/t/p/w92/${movie.poster_path}`}
-                alt=""
-              />
-            </picture>
+              /> */}
+            <img
+              src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
+              alt=""
+            />
+            {/* </picture> */}
           </SwiperSlide>
         ))}
       </Swiper>
