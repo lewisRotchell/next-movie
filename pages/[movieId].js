@@ -19,6 +19,8 @@ const MovieDetailPage = ({ selectedMovie, crew }) => {
 
   const { cast } = crew;
 
+  console.log(process.env.NODE_ENV);
+
   return (
     <>
       <Head>
