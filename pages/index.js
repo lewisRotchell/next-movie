@@ -1,6 +1,6 @@
 import Head from "next/head";
 import MovieCarousel from "../components/layout/MovieCarousel";
-import { getMoviesForCarousel } from "../helpers/api-util";
+import { getMovies } from "../helpers/api-util";
 
 export default function Home({ newReleases, popularMovies, topRatedMovies }) {
   return (
@@ -23,7 +23,7 @@ export default function Home({ newReleases, popularMovies, topRatedMovies }) {
 }
 
 export async function getStaticProps() {
-  const data = await getMoviesForCarousel();
+  const data = await getMovies();
 
   return {
     props: {

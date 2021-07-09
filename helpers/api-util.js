@@ -15,19 +15,6 @@ export async function getMovies() {
   }
 }
 
-export async function getMoviesForCarousel() {
-  const urls = [newReleasesUrl, popularMoviesUrl, topRatedMoviesUrl];
-
-  try {
-    let data = await Promise.all(
-      urls.map((url) => fetch(url).then((response) => response.json()))
-    ).catch((error) => console.log(error));
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 export async function getMovieById(movieId) {
   const res =
     await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-GB
