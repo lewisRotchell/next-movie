@@ -112,12 +112,19 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const movies = await getMovies();
+  let newReleasesUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-GB&page=1&region=GB`;
+  let popularMoviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-GB&page=1&region=GB`;
+  let topRatedMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-GB&page=1&region=GB`;
+  const urls = [newReleasesUrl, popularMoviesUrl, topRatedMoviesUrl];
+
+  let data = await Promise.all(
+    urls.map((url) => fetch(url).then((response) => response.json()))
+  ).catch((error) => console.log(error));
 
   const bigMovieArray = [
-    ...movies[0].results,
-    ...movies[1].results,
-    ...movies[2].results,
+    ...data[0].results,
+    ...data[1].results,
+    ...data[2].results,
   ];
 
   const paths = bigMovieArray.map((movie) => ({
