@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import classes from "./MovieCarousel.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Link from "next/link";
 
 import SwiperCore, { Navigation } from "swiper/core";
 
@@ -10,9 +11,9 @@ SwiperCore.use([Navigation]);
 const NewReleases = ({ movies, title }) => {
   const router = useRouter();
 
-  const handleClick = (movieId) => {
-    router.push(`/${movieId}`);
-  };
+  // const handleClick = (movieId) => {
+  //   router.push(`/${movieId}`);
+  // };
 
   return (
     <section className={`section ${classes.carousel}`}>
@@ -32,7 +33,7 @@ const NewReleases = ({ movies, title }) => {
       >
         {movies.map((movie) => (
           <SwiperSlide
-            onClick={() => handleClick(movie.id)}
+            // onClick={() => handleClick(movie.id)}
             className={classes.swiperSlide}
             key={movie.id}
           >
@@ -45,10 +46,13 @@ const NewReleases = ({ movies, title }) => {
                 media="(min-width: 420px)"
                 srcSet={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
               /> */}
-            <img
-              src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
-              alt={movie.title}
-            />
+            <Link href={`/${movie.id}`}>
+              <img
+                src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
+                alt={movie.title}
+              />
+            </Link>
+
             {/* </picture> */}
           </SwiperSlide>
         ))}

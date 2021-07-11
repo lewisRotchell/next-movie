@@ -114,6 +114,8 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const movies = await getMovies();
 
+  console.log(movies);
+
   const bigMovieArray = [
     ...movies[0].results,
     ...movies[1].results,
