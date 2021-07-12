@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { getCast, getMovieById, getMovies } from "../helpers/api-util";
 import classes from "../styles/MoviePage.module.scss";
@@ -6,6 +6,12 @@ import BackButton from "../components/button/BackButton";
 import Loading from "../components/layout/Loading";
 
 const MovieDetailPage = ({ selectedMovie, people }) => {
+  const [fadeIn, setFadeIn] = useState(false);
+
+  useEffect(() => {
+    setFadeIn(true);
+  });
+
   if (!selectedMovie || !people) {
     return <Loading />;
   }
@@ -38,7 +44,7 @@ const MovieDetailPage = ({ selectedMovie, people }) => {
           "--img-md": `url('https://image.tmdb.org/t/p/w780/${backdrop_path}')`,
           "--img-lg": `url('https://image.tmdb.org/t/p/w1280/${backdrop_path}')`,
         }}
-        className={`${classes.MovieDetailPage}`}
+        className={`${classes.MovieDetailPage} ${fadeIn ? classes.fadeIn : ""}`}
       >
         <div className={`section-padding ${classes.movieDetailsContainer}`}>
           <BackButton />

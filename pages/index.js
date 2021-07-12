@@ -31,5 +31,6 @@ export async function getStaticProps() {
       popularMovies: data[1].results,
       topRatedMovies: data[2].results,
     },
+    revalidate: 1800,
   };
 }
