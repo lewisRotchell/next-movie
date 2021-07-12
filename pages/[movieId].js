@@ -12,6 +12,10 @@ const MovieDetailPage = ({ selectedMovie, people }) => {
     setFadeIn(true);
   });
 
+  if (!selectedMovie || !people) {
+    return <Loading />;
+  }
+
   const {
     title,
     backdrop_path,
@@ -136,7 +140,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: "blocking",
+    fallback: true,
   };
 }
 
