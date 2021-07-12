@@ -12,7 +12,6 @@ const SearchMovie = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(text);
     const fullPath = `/search/${text}`;
     router.push(fullPath);
   };

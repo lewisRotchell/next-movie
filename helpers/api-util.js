@@ -31,11 +31,10 @@ export async function getCast(movieId) {
   const data = await res.json();
 
   //Get cast
-  let cast = data.cast;
+  const cast = data.cast;
   const crew = data.crew;
   return {
     cast,
     crew,
   };
-  // return data;
 }

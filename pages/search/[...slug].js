@@ -14,8 +14,6 @@ const searchPage = () => {
 
   const filterMovies = router.query.slug;
 
-  console.log(process.env.NEXT_PUBLIC_API_KEY);
-
   const { data, error } = useSWR(
     `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-GB&query=${filterMovies}&page=1&include_adult=false`
   );

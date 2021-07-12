@@ -3,8 +3,12 @@ import Head from "next/head";
 import { getCast, getMovieById, getMovies } from "../helpers/api-util";
 import classes from "../styles/MoviePage.module.scss";
 import BackButton from "../components/button/BackButton";
+import Loading from "../components/layout/Loading";
 
 const MovieDetailPage = ({ selectedMovie, people }) => {
+  if (!selectedMovie || !people) {
+    return <Loading />;
+  }
   const {
     title,
     backdrop_path,
@@ -129,7 +133,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: "blocking",
+    fallback: true,
   };
 }
 
