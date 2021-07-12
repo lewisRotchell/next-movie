@@ -4,7 +4,7 @@ import { getCast, getMovieById, getMovies } from "../helpers/api-util";
 import classes from "../styles/MoviePage.module.scss";
 import BackButton from "../components/button/BackButton";
 
-const MovieDetailPage = ({ selectedMovie, crew }) => {
+const MovieDetailPage = ({ selectedMovie, people }) => {
   const {
     title,
     backdrop_path,
@@ -15,9 +15,11 @@ const MovieDetailPage = ({ selectedMovie, crew }) => {
     runtime,
   } = selectedMovie;
 
-  const { name: directorName } = crew.director;
+  const { cast } = people;
 
-  const { cast } = crew;
+  const { crew } = people;
+
+  const director = crew.find((person) => person.job === "Director");
 
   return (
     <>
@@ -85,7 +87,8 @@ const MovieDetailPage = ({ selectedMovie, crew }) => {
           </div>
 
           <p>
-            <span className={classes.subtitle}>Director : </span> {directorName}{" "}
+            <span className={classes.subtitle}>Director : </span>{" "}
+            {director.name}
           </p>
 
           <ul></ul>
@@ -105,7 +108,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       selectedMovie: movie,
-      crew: people,
+      people: people,
     },
     revalidate: 1800,
   };
@@ -113,8 +116,6 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   const movies = await getMovies();
-
-  console.log(movies);
 
   const bigMovieArray = [
     ...movies[0].results,

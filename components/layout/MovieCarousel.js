@@ -2,11 +2,12 @@ import React from "react";
 import { useRouter } from "next/router";
 import classes from "./MovieCarousel.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
+// import { Scrollbar, A11y } from "swiper";
 import Link from "next/link";
 
-import SwiperCore, { Navigation } from "swiper/core";
+import SwiperCore, { Navigation, Scrollbar, A11y } from "swiper/core";
 
-SwiperCore.use([Navigation]);
+SwiperCore.use([Navigation, Scrollbar, A11y]);
 
 const NewReleases = ({ movies, title }) => {
   const router = useRouter();
@@ -25,6 +26,10 @@ const NewReleases = ({ movies, title }) => {
         navigation
         freeMode={true}
         freemodefluid="true"
+        a11y={{
+          prevSlideMessage: "Previous slide",
+          nextSlideMessage: "Next slide",
+        }}
         breakpoints={{
           1200: {
             slidesPerGroup: 4,
@@ -32,11 +37,7 @@ const NewReleases = ({ movies, title }) => {
         }}
       >
         {movies.map((movie) => (
-          <SwiperSlide
-            // onClick={() => handleClick(movie.id)}
-            className={classes.swiperSlide}
-            key={movie.id}
-          >
+          <SwiperSlide className={classes.swiperSlide} key={movie.id}>
             {/* <picture>
               <source
                 media="(max-width: 419px)"
