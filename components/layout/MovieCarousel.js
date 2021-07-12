@@ -1,21 +1,14 @@
 import React from "react";
-import { useRouter } from "next/router";
 import classes from "./MovieCarousel.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import { Scrollbar, A11y } from "swiper";
 import Link from "next/link";
 
-import SwiperCore, { Navigation, Scrollbar, A11y } from "swiper/core";
+import SwiperCore, { Navigation, A11y } from "swiper/core";
 
-SwiperCore.use([Navigation, Scrollbar, A11y]);
+SwiperCore.use([Navigation, A11y]);
 
 const NewReleases = ({ movies, title }) => {
-  const router = useRouter();
-
-  // const handleClick = (movieId) => {
-  //   router.push(`/${movieId}`);
-  // };
-
   return (
     <section className={`section ${classes.carousel}`}>
       <h2>{title}</h2>
@@ -53,8 +46,6 @@ const NewReleases = ({ movies, title }) => {
                 alt={movie.title}
               />
             </Link>
-
-            {/* </picture> */}
           </SwiperSlide>
         ))}
       </Swiper>
